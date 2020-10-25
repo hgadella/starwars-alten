@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+      <h4 class="card-title mt-3 text-center">Register to Annexia T-Shirts</h4>
+      <p class="text-center">Start your free account and enjoy our shop</p>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <!-- fullname -->
+        <div class="form-group input-group">
+              <input
+                type="text"
+                formControlName="name"
+                placeholder="Your name"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+              />
+              <div *ngIf="submitted && f.name.errors?.required === true" class="invalid-feedback">
+                  <div *ngIf="f.name.errors?.required">We need to know your name</div>
+              </div>
+          </div>
+        <div class="form-group input-group">
+              <input
+                type="text"
+                formControlName="surname"
+                placeholder="Your surname"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.surname.errors }"
+              />
+              <div *ngIf="submitted && f.surname.errors?.required === true" class="invalid-feedback">
+                  <div *ngIf="f.surname.errors?.required">We need to know your surname</div>
+              </div>
+          </div>
+
+        <!-- user -->
+        <div class="form-group input-group">
+              <input
+                type="text"
+                formControlName="username"
+                placeholder="User name"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+              />
+              <div *ngIf="submitted && f.username.errors?.required === true" class="invalid-feedback">
+                  <div *ngIf="f.username.errors?.required">We need to know your name</div>
+              </div>
+              <div *ngIf="submitted && f.username.errors?.minlength" class="invalid-feedback">
+                  <div>Minimum length for your usernamme is {{f.username.errors?.minlength.requiredLength}}, now is {{f.username.errors?.minlength.actualLength}}</div>
+              </div>
+          </div>
+
+          <!-- pass -->
+          <div class="form-group input-group">
+            <input
+              type="password"
+              formControlName="password"
+              placeholder="Password"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+            />
+            <div *ngIf="submitted && f.password.errors?.required === true" class="invalid-feedback">
+              <div *ngIf="f.password.errors?.required">Enter a password, please</div>
+            </div>
+
+            <div *ngIf="submitted && f.password.errors?.minlength && f.password.errors?.required !== true" class="invalid-feedback">
+              <div>Minimum length for your password is {{f.password.errors?.minlength.requiredLength}}, now is {{f.password.errors?.minlength.actualLength}}</div>
+            </div>
+          </div>
+
+          <!-- pass chec -->
+          <div class="form-group input-group">
+            <input
+              type="password"
+              formControlName="password_check"
+              placeholder="Repeat password"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.password_check.errors }"
+            />
+            <div *ngIf="submitted && f.password_check.errors?.required === true" class="invalid-feedback">
+                <div *ngIf="f.password_check.errors?.required">Repeat your password, please</div>
+            </div>
+          </div>
+
+          <!-- submit -->
+          <div class="form-group">
+              <div *ngIf="error" class="alert alert-danger">
+                <p>{{error}}</p>
+                <p *ngIf="submitted && form.errors?.passwordMismatch === true">
+                  Passwords must be equals
+                </p>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+          </div>
+          <p class="text-center">Have an account? <a routerLink="/login" class="btn btn-link">Log In</a> </p>
+      </form>
+      </article>
+    </div> <!-- card.// -->
+
+  </div>
+  <!--container end.//-->

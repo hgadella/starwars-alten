@@ -1,0 +1,8 @@
+<h1>Ships</h1>
+
+<div class="ships">
+  <div class="row">
+      <app-ship-display *ngFor="let item of items | slice:0:count" [starship]="item" class="col-xs-6 col-sm-6 col-md-3"></app-ship-display>
+  </div>
+</div>
+<button (click)="fetchNextPage()" [disabled]="count > items?.length" class="btn btn-primary">Más datos</button>

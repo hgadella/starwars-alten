@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+a
+{
+  cursor: pointer;
+}
+
+
+.ship
+{
+  .card-body
+  {
+    img {
+      max-width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.container
+{
+  width: 100%;
+}
+
+@media (min-width: 992px) and (max-width: 1200px)
+{
+  .card-header {
+    min-height: 72px;
+    height: 58px;
+  }
+}
+
+
+
+@media (min-width: 992px)
+{
+  .container
+  {
+    width: 750px;
+  }
+}
+
+
